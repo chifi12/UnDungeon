@@ -1,6 +1,6 @@
 package principal;
 
-import principal.control.GestorControles;
+
 import principal.graficos.SuperficieDibujo;
 import principal.graficos.Ventana;
 import principal.maquinaestado.GestorEstados;
