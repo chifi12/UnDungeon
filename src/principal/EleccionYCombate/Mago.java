@@ -1,5 +1,7 @@
 package principal.EleccionYCombate;
 
+import javax.swing.JOptionPane;
+
 public class Mago { // Inicio Clase
 
     int Vit = 500, Atq = 90, Def = 60, Spd = 80, Mana = 150;
@@ -23,8 +25,8 @@ public class Mago { // Inicio Clase
                 Spd = Spd + 15;
                 Mana = Mana + 20;
                 xpnecesaria = xpnecesaria * 2;
-                System.out.println("El heroe ha subido al nivel " + nivel);
-                System.out.println("Sus nuevos stats son: \n Vit: " + Vit + "\n Atq: " + Atq + "\n Def: " + Def + "\n Spd: " + Spd);
+                JOptionPane.showMessageDialog(null,"El heroe ha subido al nivel " + nivel);
+                JOptionPane.showMessageDialog(null,"Sus nuevos stats son: \n Vit: " + Vit + "\n Atq: " + Atq + "\n Def: " + Def + "\n Spd: " + Spd);
             }
         }
         return nivel;

@@ -22,7 +22,7 @@ public class Combate { // Inicio Clase
         }
 
         enemigo = new Enemigos();
-        int miniom = 0;
+        int miniom = (int) (Math.random() * 3);
         enemigo.Enemigo(miniom);
         boolean pelea = true; // Esta variable controla el combate, si esta en TRUE significa que hay un combate
 
@@ -103,8 +103,8 @@ public class Combate { // Inicio Clase
 
                 JOptionPane.showMessageDialog(null, "El Monstruo quedo K.O");
                 JOptionPane.showMessageDialog(null, "El ganador es el Heroe");
-                JOptionPane.showMessageDialog(null, "El heroe ha ganado 150 pts de exp");
-                player.exp(150);
+                JOptionPane.showMessageDialog(null, "El heroe ha ganado 250 pts de exp");
+                player.exp(250);
                 pelea = false; // Terminamos el combate
                 break; // Finalizamos el Bucle
 
@@ -122,7 +122,7 @@ public class Combate { // Inicio Clase
         }
 
         enemigo2 = new Enemigos();
-        int jefecito = 0;
+        int jefecito = (int) (Math.random() * 3);
         enemigo2.Jefe(jefecito);
 
         turno = 0;

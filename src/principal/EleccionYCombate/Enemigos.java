@@ -25,7 +25,7 @@ public class Enemigos { // Inicio Programa General
                 bandera = false;
                 break;
             } else {
-                enemigo = (int) (Math.random() * 3) + 1;
+                enemigo = (int) (Math.random() * 3);
             }
         }
         switch (enemigo) {
@@ -56,7 +56,16 @@ public class Enemigos { // Inicio Programa General
     int JVit, JAtq, JDef, JSpd;
 
     public void Jefe(int enemigo2) {
-
+        
+        boolean bandera = true;
+        while (bandera = true) {
+            if ((enemigo2 <= 2) || (enemigo2 >= 0)) {
+                bandera = false;
+                break;
+            } else {
+                enemigo2 = (int) (Math.random() * 3);
+            }
+        }
         switch (enemigo2) {
             case 0:
                 JOptionPane.showMessageDialog(null, "Giordanninimon ha aparecido");
