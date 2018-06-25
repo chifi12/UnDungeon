@@ -30,8 +30,8 @@ public class Mago { // Inicio Clase
         return nivel;
     }
 
-    public int nivel (Mago player){
+    public int nivel(Mago player) {
         return nivel;
     }
-    
+
 } // Fin Clase
