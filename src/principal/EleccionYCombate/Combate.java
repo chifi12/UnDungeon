@@ -26,7 +26,6 @@ public class Combate { // Inicio Clase
         enemigo.Enemigo(miniom);
         boolean pelea = true; // Esta variable controla el combate, si esta en TRUE significa que hay un combate
 
-        JOptionPane.showMessageDialog(null, "¡Has entrado en combate!");
         // Antes de empezar el combate comparamos las velocidades del Heroe y del Monstruo, el que tenga la mas alta empieza atacando
         if (player.Spd < enemigo.MSpd) { // Si la del Monstruo es mas rapida
             JOptionPane.showMessageDialog(null, "El Monstruo es mas rapido, atacara primero"); // Informamos que pasa al Usuario
@@ -43,8 +42,7 @@ public class Combate { // Inicio Clase
             //while ((Vit > 0 )||(MVit > 0)) {
             if (turno == 1) { // Si el turno esta en 1, le toca realizar la accion al Heroe 
 
-                JOptionPane.showMessageDialog(null, "Es el turno del Heroe");
-                JOptionPane.showMessageDialog(null, "La vida del Heroe es: " + player.Vit);
+                JOptionPane.showMessageDialog(null, "Es el turno del Heroe\nLa vida del Heroe es: " + player.Vit);
 
                 // Le damos al usuario a elegir que desea hacer, si atacar o huir
                 int control = 1;
@@ -66,13 +64,10 @@ public class Combate { // Inicio Clase
                 //String eleccion = sc.nextLine(); // Pedimos por teclado
 
                 if (confir == 1) { // Si el usuario desea atacar...
-                    JOptionPane.showMessageDialog(null, "El Heroe ataca a " + enemigo.Monstruos[miniom]);
                     enemigo.MVit = enemigo.MVit - (player.Atq - enemigo.MDef); // Para calcular el daño realizado, simplemente a la Vida del Monstruo le restamos el Ataque del Heroe menos la Defensa del Mob
-                    JOptionPane.showMessageDialog(null, "El Heroe le quita: " + (player.Atq - enemigo.MDef) + " pts de vida"); // Mostramos el daño causado
+                    JOptionPane.showMessageDialog(null, "El Heroe ataca a " + enemigo.Monstruos[miniom] + "\nEl Heroe le quita: " + (player.Atq - enemigo.MDef) + " pts de vida");
                     turno = 0; // Cambiamos el turno
                 } else { // Si no desea atacar...
-                    JOptionPane.showMessageDialog(null, "El heroe intenta huir");
-                    JOptionPane.showMessageDialog(null, "Y encuentra la oportunidad de correr!");
                     JOptionPane.showMessageDialog(null, "¡El heroe logro huir!");
                     pelea = false; // Finalizamos la pelea
                     break; // Con esta sentencia evitamos que nos salga el dialogo de K.O
@@ -81,9 +76,7 @@ public class Combate { // Inicio Clase
             } // Termino el turno del Heroe
             else if (turno == 0) { // Turno Mob
 
-                JOptionPane.showMessageDialog(null, "Es el turno de " + enemigo.Monstruos[miniom]);
-                JOptionPane.showMessageDialog(null, "La vida de " + enemigo.Monstruos[miniom] + " es: " + enemigo.MVit);
-                JOptionPane.showMessageDialog(null, enemigo.Monstruos[miniom] + " ataca al Heroe");
+                JOptionPane.showMessageDialog(null, "Es el turno de " + enemigo.Monstruos[miniom] + "\nLa vida de " + enemigo.Monstruos[miniom] + " es: " + enemigo.MVit + "\n" + enemigo.Monstruos[miniom] + " ataca al Heroe");
                 player.Vit = (player.Vit - (enemigo.MAtq - player.Def));
                 JOptionPane.showMessageDialog(null, "El Monstruo te quita: " + (enemigo.MAtq - player.Def) + " pts de vida");
                 turno = 1; // Cambiamos el turno
@@ -92,18 +85,15 @@ public class Combate { // Inicio Clase
 
             if (player.Vit <= 0) { // Si la vida del HEROE es menor o igual a 0 entonces...
 
-                JOptionPane.showMessageDialog(null, "El Heroe ha muerto");
-                JOptionPane.showMessageDialog(null, "El ganador es el Monstruo");
-                JOptionPane.showMessageDialog(null, "Game Over");
+                JOptionPane.showMessageDialog(null, "El Heroe ha muerto\nEl ganador es el Monstruo");
+                JOptionPane.showMessageDialog(null, " G A M E  O V E R ");
                 pelea = false; // Terminamos el combate
                 break; // Finalizamos el bucle Wh
 
             } // Terminamos el If
             else if (enemigo.MVit <= 0) { // Si la vida del Monstruo es menor o igual a 0 entonces...
 
-                JOptionPane.showMessageDialog(null, "El Monstruo quedo K.O");
-                JOptionPane.showMessageDialog(null, "El ganador es el Heroe");
-                JOptionPane.showMessageDialog(null, "El heroe ha ganado 250 pts de exp");
+                JOptionPane.showMessageDialog(null, "El Monstruo quedo K.O\nEl ganador es el Heroe\nEl heroe ha ganado 250 pts de exp");
                 player.exp(250);
                 pelea = false; // Terminamos el combate
                 break; // Finalizamos el Bucle
@@ -113,8 +103,9 @@ public class Combate { // Inicio Clase
 
     } // Fin del Combate
 
-    public void PeleaJefe(Mago player) {
-
+    public void PeleaJefe(Mago player, int JNiv) {
+        
+        int CondicionJefe = 0;
         try {
             Thread.sleep(2000);
         } catch (InterruptedException ex) {
@@ -122,23 +113,21 @@ public class Combate { // Inicio Clase
         }
 
         enemigo2 = new Enemigos();
-        int jefecito = (int) (Math.random() * 3);
+        int jefecito = JNiv;
         enemigo2.Jefe(jefecito);
 
         turno = 0;
         boolean pelea = true;
 
-        JOptionPane.showMessageDialog(null, "Has entrado en pelea contra un Jefe, ten cuidado...");
+        JOptionPane.showMessageDialog(null, "A T E N C I O N \nHas entrado en pelea contra un Jefe\nRecuerda que NO puedes huir de un JEFE");
         JOptionPane.showMessageDialog(null, "El jefe es mas rapido que el heroe, atacara primero");
 
         while (pelea = true) {
 
             if (turno == 1) { // Si el turno esta en 1, le toca realizar la accion al Heroe 
 
-                JOptionPane.showMessageDialog(null, "Es el turno del Heroe");
-                JOptionPane.showMessageDialog(null, "La vida del Heroe es: " + player.Vit);
+                JOptionPane.showMessageDialog(null, "Es el turno del Heroe\nLa vida del Heroe es: " + player.Vit + "\nEl Heroe ataca a " + enemigo2.Jefe[jefecito]);
 
-                JOptionPane.showMessageDialog(null, "El Heroe ataca a " + enemigo2.Jefe[jefecito]);
                 enemigo2.JVit = enemigo2.JVit - (player.Atq - enemigo2.JDef); // Para calcular el daño realizado, simplemente a la Vida del Monstruo le restamos el Ataque del Heroe menos la Defensa del Mob
                 JOptionPane.showMessageDialog(null, "El Heroe le quita: " + (player.Atq - enemigo2.JDef) + " pts de vida"); // Mostramos el daño causado
                 turno = 0; // Cambiamos el turno
@@ -146,9 +135,7 @@ public class Combate { // Inicio Clase
             } // Termino el turno del Heroe
             else if (turno == 0) { // Turno Mob
 
-                JOptionPane.showMessageDialog(null, "Es el turno de " + enemigo2.Jefe[jefecito]);
-                JOptionPane.showMessageDialog(null, "La vida de " + enemigo2.Jefe[jefecito] + " es: " + enemigo2.JVit);
-                JOptionPane.showMessageDialog(null, enemigo2.Jefe[jefecito] + " ataca al Heroe");
+                JOptionPane.showMessageDialog(null, "Es el turno de " + enemigo2.Jefe[jefecito] + "\nLa vida de " + enemigo2.Jefe[jefecito] + " es: " + enemigo2.JVit + "\n" + enemigo2.Jefe[jefecito] + " ataca al Heroe");
                 player.Vit = player.Vit - (enemigo2.JAtq - player.Def);
                 JOptionPane.showMessageDialog(null, "El Jefe te quita: " + (enemigo2.JAtq - player.Def) + " pts de vida");
                 turno = 1; // Cambiamos el turno
@@ -157,24 +144,21 @@ public class Combate { // Inicio Clase
 
             if (player.Vit <= 0) { // Si la vida del HEROE es menor o igual a 0 entonces...
 
-                JOptionPane.showMessageDialog(null, "El Heroe ha muerto");
-                JOptionPane.showMessageDialog(null, "El ganador es el Monstruo");
-                JOptionPane.showMessageDialog(null, "Game Over");
+                JOptionPane.showMessageDialog(null, "El Heroe ha muerto\nEl ganador es el Monstruo");
+                JOptionPane.showMessageDialog(null, " G A M E  O V E R ");
                 pelea = false; // Terminamos el combate
-                System.exit(0);
+                System.exit(0); // Se cierra todo el programa ya que murio el Heroe
                 break; // Finalizamos el bucle Wh
 
             } // Terminamos el If
             else if (enemigo2.JVit <= 0) { // Si la vida del Monstruo es menor o igual a 0 entonces...
 
-                JOptionPane.showMessageDialog(null, "El Jefe ha muerto");
-                JOptionPane.showMessageDialog(null, "El ganador es el Heroe");
-                JOptionPane.showMessageDialog(null, "El heroe ha ganado 500 pts de exp");
+                JOptionPane.showMessageDialog(null, "El Jefe ha muerto\nEl ganador es el Heroe\nEl heroe ha ganado 500 pts de exp");
                 player.exp(500);
                 pelea = false; // Terminamos el combate
                 break; // Finalizamos el Bucle
 
             } // Fin del else
-        }
-    }
+        } // Fin While Pelea
+    } // Fin Metodo Pelea Jefe    
 } // Fin Clase

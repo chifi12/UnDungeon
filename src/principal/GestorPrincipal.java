@@ -51,7 +51,7 @@ public class GestorPrincipal {
         int fps = 0;
 
         final int NS_POR_SEGUNDO = 1000000000; //variable para temporizador
-        final int APS_OBJETIVO = 80; //variable para actualizaciones de controles (Que tan rapido va el juego), valor maximo de byte es 127 (sino usar int) 
+        final int APS_OBJETIVO = 60; //variable para actualizaciones de controles (Que tan rapido va el juego), valor maximo de byte es 127 (sino usar int) 
         final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS_OBJETIVO;
 
         long referenciaActualizacion = System.nanoTime();
@@ -92,12 +92,18 @@ public class GestorPrincipal {
             }
 
             if (banderaCom == 7000) {
-                if (player.nivel (player) >= 5) {
-                    combate.PeleaJefe(player);
+                if (player.nivel (player) >= 4 && player.nivel (player) < 6) {
+                    combate.PeleaJefe(player, 0);
                     banderaCom = 0;
                 }
-                else
+                else if (player.nivel (player) >= 6 && player.nivel (player) < 8){
+                    combate.PeleaJefe(player, 1);
                     banderaCom = 0;
+                }
+                else if ((player.nivel (player) >= 8)) {
+                    combate.PeleaJefe(player, 2);
+                    banderaCom = 0;
+                }
             }
             // Fin Combate
 

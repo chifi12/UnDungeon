@@ -1,6 +1,7 @@
 package principal.EleccionYCombate;
 
 import javax.swing.JOptionPane;
+import principal.EleccionYCombate.Mago;
 
 /**
  * @author Chifi
